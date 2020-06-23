@@ -1,0 +1,46 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% load static %}
+
+    {% block before_posts %}    {% endblock %}
+
+    {% if latest_posts %}
+        <hr class="mt-0 mb-4">
+        <br>
+            <ul class="container float-left">
+            {% for post in latest_posts %}
+                      <div class="card bg-light d-flex flex-row"  style=" min-width: 40vw;">
+                        <div class="card-body">
+                            <h4 class="card-title mt-2"> <a href="/user/{{ post.author_id }}/">{{ post.author_name }}: </a> </h4>
+                            <hr class="mt-0 mb-4">
+                            <h3 class="card-text p-2">{{ post.text }}</h3>
+
+                            <div class="row">
+                                <div class="col-md">
+                                    <button type="button"
+                                            onclick="getLikes({{ post.id }}, {{ post.id }})"
+                                            class="btn text-nowrap card-subtitle text-l-gleft text-muted likes-counter">
+                                        {% csrf_token %}
+                                        <div style="float:left" id="post_card_likes_{{ post.id }}">{{ post.likes }}</div>
+                                        <i style="margin-left:0.4rem" class="icofont-like"></i>
+                                    </button>
+                                </div>
+                                <div class="col-sm">
+                                    <h6 class="card-subtitle text-lg-right text-muted">Published: {{ post.pub_date }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+            {% endfor %}
+            </ul>
+    {% else %}
+        <p>No tweets are available.</p>
+    {% endif %}
+
+    {% block after_posts %}    {% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="{% static 'blog/js/tweets.js' %}"></script>
+
+{% endblock %}

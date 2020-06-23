@@ -1,0 +1,18 @@
+{% extends 'blog/tweets.html' %}
+
+{% block title %}
+    <title>User page</title>
+
+{% endblock %}
+
+{% block before_posts %}
+    <div class="container float-left">
+        <hr class="mt-10 mb-3">
+    </div>
+
+    <h1>Main page of the user: {{ page_owner }}</h1>
+
+    <div class="container float-left">
+        <hr class="mt-1 mb-20">
+    </div>
+{% endblock %}

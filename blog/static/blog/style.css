@@ -1,0 +1,9 @@
+.card {
+  overflow: hidden;
+}
+.card-text {
+  word-wrap: break-word;
+}
+.card-block {
+  word-wrap: break-word;
+}

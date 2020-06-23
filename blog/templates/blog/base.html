@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+
+{% block body %}
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
+    <div class="container justify-content-center">
+      <div class="row justify-content-center">
+          {% block content %}
+          {% endblock %}
+       </div>
+    </div>
+{% endblock %}

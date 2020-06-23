@@ -1,0 +1,22 @@
+{% extends 'userData/base.html' %}
+
+{% block title %}
+    <title>Register</title>
+{% endblock %}
+
+
+{% block content %}
+
+    {% load crispy_forms_tags %}
+
+    <h1 class="mt-2">Register</h1>
+    <hr class="mt-0 mb-4">
+
+    <form method="POST" action="/users/register/">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p><a href="/users/login">Login</a></p>
+        <button type="submit" class="btn btn-success", name="Register">Register</button>
+    </form>
+
+{% endblock %}
